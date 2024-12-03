@@ -1,0 +1,15 @@
+artifact_uri: file:///Volumes/MLS/Projects/FIAP/1MLET/fase-4/fase_4_tech_challenge/mlruns/147978876530517038/27554c7313f94d80a2f8b559fe3036cf/artifacts
+end_time: 1733249121500
+entry_point_name: ''
+experiment_id: '147978876530517038'
+lifecycle_stage: active
+run_id: 27554c7313f94d80a2f8b559fe3036cf
+run_name: silent-perch-157
+run_uuid: 27554c7313f94d80a2f8b559fe3036cf
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1733249044788
+status: 3
+tags: []
+user_id: murilolucasdasilva

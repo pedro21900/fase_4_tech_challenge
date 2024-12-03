@@ -7,7 +7,7 @@ RUN apk add --no-cache gcc g++ musl-dev linux-headers
 WORKDIR /app
 
 # Copiar todos os arquivos do diretório atual para o diretório de trabalho no contêiner
-COPY . .
+COPY . /app
 
 # Instalar as dependências do Python
 RUN pip install --no-cache-dir --upgrade -r requirements.txt

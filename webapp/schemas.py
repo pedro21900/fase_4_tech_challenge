@@ -4,15 +4,17 @@ from pydantic import BaseModel
 
 class PredictPrice(BaseModel):
     """
-    Modelo de dados utilizado para prever o preço de itens com base em características geométricas.
+    Modelo de dados utilizado para prever o preço de ações com base em características financeiras.
 
     Atributos:
-        quilate (Optional[float]): O peso do item em quilates (padrão: None).
-        x (Optional[float]): O comprimento do item (padrão: None).
-        y (Optional[float]): A largura do item (padrão: None).
-        z (Optional[float]): A altura do item (padrão: None).
+        adj_close (Optional[float]): Preço ajustado de fechamento (padrão: None).
+        high (Optional[float]): Valor máximo do dia (padrão: None).
+        low (Optional[float]): Valor mínimo do dia (padrão: None).
+        open (Optional[float]): Preço de abertura (padrão: None).
+        volume (Optional[float]): Volume negociado (padrão: None).
     """
-    quilate: Optional[float] = None
-    x: Optional[float] = None
-    y: Optional[float] = None
-    z: Optional[float] = None
+    adj_close: Optional[float] = None
+    high: Optional[float] = None
+    low: Optional[float] = None
+    open: Optional[float] = None
+    volume: Optional[float] = None
