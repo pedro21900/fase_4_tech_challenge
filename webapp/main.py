@@ -40,3 +40,8 @@ async def predict_price_endpoint(predict_price_input: List[List[PredictPrice]] =
         return JSONResponse(status_code=200, content={"preco": preco.tolist()})
     except Exception as e:
         return JSONResponse(status_code=500, content={"error": str(e)})
+
+
+@app.get("/health")
+async def health_check():
+    return {"status": "ok"}
