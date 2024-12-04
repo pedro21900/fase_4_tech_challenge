@@ -1,16 +1,30 @@
-FROM python:3.12-alpine3.19
+# Usar uma imagem base oficial do Amazon Linux 2023
+FROM public.ecr.aws/amazonlinux/amazonlinux:2023.6.20241121.0
 
-# Instalar as dependências de compilação
-RUN apk add --no-cache gcc g++ musl-dev linux-headers
+# Atualizar o sistema e instalar dependências do sistema
+RUN yum update -y && \
+    yum install -y \
+    python3 \
+    python3-pip \
+    gcc \
+    gcc-c++ \
+    make \
+    openblas-devel \
+    lapack-devel \
+    yum-utils && \
+    yum clean all
 
 # Definir o diretório de trabalho
 WORKDIR /app
 
-# Copiar todos os arquivos do diretório atual para o diretório de trabalho no contêiner
-COPY . .
+# Copiar os arquivos da API para o container
+COPY . /app
 
-# Instalar as dependências do Python
-RUN pip install --no-cache-dir --upgrade -r requirements.txt
+# Instalar as dependências da API a partir do requirements.txt
+RUN pip3 install --no-cache-dir -r requirements.txt
+
+# Expor a porta 80
+EXPOSE 80
 
 # Definir o entrypoint do contêiner
-ENTRYPOINT ["python3", "-m", "uvicorn", "webapp.main:app", "--host", "0.0.0.0", "--port", "8000", "--workers", "4"]
+ENTRYPOINT ["python3", "-m", "uvicorn", "webapp.main:app", "--host", "0.0.0.0", "--port", "80", "--log-level", "debug"]
